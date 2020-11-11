@@ -30,7 +30,7 @@ LyricsTovMix is portable: just unzip the archive.
 
 Note:
 
-LyricsTovMix doesn't consume a lot of CPU and memory but it could be better to run it on the computer that run the Lyrics projection software to let maximum resources to the vMix computer.
+LyricsTovMix doesn't consume a lot of CPU and memory but it could be better to run it on the computer that run the Lyrics projection software to let maximum resources to the vMix computer... but that's up to you.
 
 # Troubleshouting
 
@@ -49,3 +49,4 @@ Thanks for the great idea!
 # ToDo
 
 * Currently LyricsTovMix doesn't support API authentication on OpenLP and vMix.
+* Add a parameter in order to truncate text if there is too much lines.

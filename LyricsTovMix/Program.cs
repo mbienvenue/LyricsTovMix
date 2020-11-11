@@ -14,25 +14,6 @@ namespace LyricsTovMix
 
         private static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
-
-            //var client = new HttpClient();
-            //var uri = new Uri("http://" + Configuration.Instance.LyricsIP + ":" + Configuration.Instance.LyricsPortNumber + "/api/poll?_=1604841533657");
-            //var content = await client.GetStringAsync(uri);
-            //Poll poll = JsonConvert.DeserializeObject<Poll>(content);
-
-
-            //var uri2 = new Uri("http://" + Configuration.Instance.LyricsIP + ":" + Configuration.Instance.LyricsPortNumber + "/api/controller/live/text");
-            //var content2 = await client.GetStringAsync(uri2);
-            //LiveText liveText = JsonConvert.DeserializeObject<LiveText>(content2);
-
-            //Slide currentSlide = liveText.Results.Slides.Where(slide => slide.Selected).FirstOrDefault();
-
-            //string currentText = currentSlide.Text;
-            //Console.WriteLine("Current text: " + currentText);
-
-
             Console.Clear();
             origRow = Console.CursorTop;
             origCol = Console.CursorLeft;
@@ -47,6 +28,7 @@ namespace LyricsTovMix
 
             while (true)
             {
+                // get the current Lyrics:
                 string firstLine = "Lyrics connected ";
                 string text = string.Empty;
                 try
@@ -79,24 +61,31 @@ namespace LyricsTovMix
                     sentTovMix = false;
                 }
 
+                // send lyrics to vMix :
                 if (!sentTovMix && !string.IsNullOrEmpty(text))
                 {
+                    string secondLine = "Sent to vMix: ";
+                    WriteAt(secondLine + "pending...", 0, 1);
+
+
                     try
                     {
-                        string secondLine = "Sent to vMix: ";
-                        WriteAt(secondLine + "pending...", 0, 1);
-                        vMix.SendTovMix(text);
-                        WriteAt("OK !      ", secondLine.Length, 1);
+                        sentTovMix = await vMix.SendTovMix(text);
                     }
                     catch (Exception ex)
                     {
                         Console.Clear();
-                        Console.WriteLine("Cannot send to vMix:");
+                        Console.WriteLine("Cannot sent lyrics to vMix:");
+                        Console.WriteLine(string.Empty);
                         Console.WriteLine(ex);
+                    }
+                    if (sentTovMix)
+                    {
+                        WriteAt("OK !      ", secondLine.Length, 1);
                     }
                 }
 
-                if (!string.IsNullOrEmpty(text))
+                if (!string.IsNullOrEmpty(text) && sentTovMix)
                 {
                     Spin(firstLine.Length, ref spinnerCallCount);
                 }
