@@ -1,8 +1,10 @@
-﻿using System.Configuration;
+﻿using System.IO;
+using System.Text.Json;
+using Microsoft.Extensions.Configuration;
 
 namespace LyricsTovMix
 {
-    internal class Configuration
+    internal class Settings
     {
         public int LyricsPortNumber { get; set; }
 
@@ -15,10 +17,12 @@ namespace LyricsTovMix
         public int VMixInput { get; set; }
 
         public int VMixSelectedIndex { get; set; }
+    }
+    internal class Configuration
+    {
+        private static Settings _instance;
 
-
-        private static Configuration _instance;
-        public static Configuration Instance
+        public static Settings Instance
         {
             get
             {
@@ -27,18 +31,22 @@ namespace LyricsTovMix
                     return _instance;
                 }
 
-                _instance = new Configuration
-                {
-                    LyricsIP = ConfigurationManager.AppSettings.Get("LyricsIp"),
-                    LyricsPortNumber = int.Parse(ConfigurationManager.AppSettings.Get("LyricsPort")),
-                    VMixIP = ConfigurationManager.AppSettings.Get("vMixIp"),
-                    VMixPort = int.Parse(ConfigurationManager.AppSettings.Get("vMixPort")),
-                    VMixInput = int.Parse(ConfigurationManager.AppSettings.Get("vMixInput")),
-                    VMixSelectedIndex = int.Parse(ConfigurationManager.AppSettings.Get("vMixSelectedIndex")),
-                };
-
+                IConfigurationRoot config2 = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("AppSettings.json", false, true)
+                    .Build();
+                Settings settings = config2.Get<Settings>();
+                _instance = settings;
                 return _instance;
             }
+        }
+
+        public override string ToString()
+        {
+            return JsonSerializer.Serialize(this, new JsonSerializerOptions
+            {
+                WriteIndented = true
+            });
         }
     }
 }

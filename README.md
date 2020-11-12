@@ -1,10 +1,10 @@
 ﻿# Purpose
 
-This console application is gateway to be used with a Lyrics projection software and vMix production and streaming software (see : https://www.vmix.com/).
+This console application is a gateway to be used with a Lyrics projection software and vMix production and streaming software (see : https://www.vmix.com/).
 The idea is to retrieve only the text of the current slide of the Lyrics projection software and send it to a Title input in vMix.
 Then the layout will be done on vMix on the Text Input (not on the Lyrics projection software that only manage the layout for the projection).
 
-Currently, only OpenLP is supported (see: https://openlp.org/), but can be easily extended...
+Currently, only OpenLP is supported (see: https://openlp.org/), but it can be easily extended to other...
 
 To do so, LyricsTovMix call the API of the lyrics software in order to get the current slide text then forward that text to the vMix API.
 
@@ -23,9 +23,9 @@ To do so, LyricsTovMix call the API of the lyrics software in order to get the c
 LyricsTovMix is portable: just unzip the archive.
 
 
-# LyricsTovMix usage
+# Usage
 
-1. Update LyricsTovMix.dll.config with your own IPs, port number and input number
+1. Update AppSettings.json file with your own IPs, port number and input number
 2. Launch LyricsTovMix.exe
 
 Note:

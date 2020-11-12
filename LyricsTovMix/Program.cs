@@ -14,7 +14,17 @@ namespace LyricsTovMix
 
         private static async Task Main(string[] args)
         {
-            Console.Clear();
+
+#if DEBUG
+
+            Console.WriteLine("Waiting for debugger to attach");
+            while (!System.Diagnostics.Debugger.IsAttached)
+            {
+                Thread.Sleep(100);
+            }
+            Console.WriteLine("Debugger attached");
+#endif
+
             origRow = Console.CursorTop;
             origCol = Console.CursorLeft;
             long spinnerCallCount = 0;
