@@ -25,7 +25,7 @@ LyricsTovMix is portable: just unzip the archive.
 
 # Usage
 
-1. Update AppSettings.json file with your own IPs, port numbers and input number (you should have noted those setting earlyer ;-) )
+1. Update AppSettings.json file with your own IPs, port numbers and input number (you should have noted those settings earlyer ;-) )
 2. Launch LyricsTovMix.exe
 3. Change the current slide on OpenLP, it should appear in vMix!
 4. Customize your lower third layout in vMix to have the overlay you want for your live Show!
