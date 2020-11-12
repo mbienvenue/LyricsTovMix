@@ -10,11 +10,11 @@ To do so, LyricsTovMix call the API of the lyrics software in order to get the c
 
 # Setting up OpenLP
 
-1. Get the IP and port number in OpenLP
+1. Get the IP and port number in OpenLP: URL found in Settings/Configure OpenLP/Remote/Stage view URL
 
 # Setting up vMix
 
-1. Enable Remote access (Settings/Web Controller/Enabled)
+1. Enable Remote access (Settings/Web Controller/Enabled), get the IP and port number
 2. Add a Title input (Add Input/Title XAML/Text Text HD)
 3. Note the Title input number
 
@@ -25,8 +25,10 @@ LyricsTovMix is portable: just unzip the archive.
 
 # Usage
 
-1. Update AppSettings.json file with your own IPs, port number and input number
+1. Update AppSettings.json file with your own IPs, port numbers and input number (you should have noted those setting earlyer ;-) )
 2. Launch LyricsTovMix.exe
+3. Change the current slide on OpenLP, it should appear in vMix!
+4. Customize your lower third layout in vMix to have the overlay you want for your live Show!
 
 Note:
 
@@ -35,8 +37,8 @@ LyricsTovMix doesn't consume a lot of CPU and memory but it could be better to r
 # Troubleshouting
 
 My slide cannot be sent to vMix : check if the computer that run LyricsTovMix can access:
-* to vMix : open the Web controller URL found in Settings/Web Controller/Enabled in your browser
-* to OpenLP : open the stage display URL found in Settings/Configure OpenLP/Remote/Stage view URL
+* to vMix : open the Web controller, URL found in Settings/Web Controller/Enabled in your browser
+* to OpenLP : open the stage display, URL found in Settings/Configure OpenLP/Remote/Stage view URL
 
 If both pages can be open on the computer that run LyricsTovMix, the problem is due to the configuration of LyricsTovMix.
 If those pages can't be open, check your network/firewall settings, vMix, OpenLP, etc. settings in order to correct the problem.
